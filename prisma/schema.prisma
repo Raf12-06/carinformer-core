@@ -37,4 +37,18 @@ model Car {
 
   MarkModel   MarkModel? @relation(fields: [markModelId], references: [id])
   markModelId Int?
+
+  Engine   Engine? @relation(fields: [engineId], references: [id])
+  engineId Int?
+
+  @@unique([markModelId, engineId])
+}
+
+model Engine {
+  id             Int     @id @default(autoincrement())
+  name           String  @unique @db.VarChar(15)
+  volume         Int     @db.UnsignedInt
+  horsepower     Int     @db.UnsignedInt
+  medium_expense Decimal @db.Decimal(10, 1)
+  Car            Car[]
 }

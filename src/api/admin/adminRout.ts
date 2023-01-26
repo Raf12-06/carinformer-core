@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client'
 import { Client } from '../../system/client';
-
-const db = new PrismaClient()
+import { Car } from '../../service/car/carQuery';
 
 export const adminRout = {
     router: {
@@ -32,18 +30,16 @@ export const adminRout = {
                             }
                         }
                     },
+                    preHandler: async (client: Client) => {
+                        console.log('preHandler');
+                    },
                     handler: async (data: any) => {
-                        const { name, description } = data;
-                        const id = await db.mark.create({
-                            data: {
-                                name,
-                                description,
-                            }
-                        });
-                        return id;
+                        const car = new Car();
+                        return await car.createCar();
                     },
                     postHandler: async (client: Client) => {
-                        client.setCookie('mark', client.body.name);
+                        // client.setCookie('mark', client.body.name);
+                        console.log('postHandler');
                     }
                 }
             }
