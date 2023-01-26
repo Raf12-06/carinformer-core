@@ -1,0 +1,74 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": ["./tsconfig.json"]
+    },
+    "extends": "standard-with-typescript",
+    "overrides": [
+    ],
+    "rules": {
+        "@typescript-eslint/indent": [
+            "error",
+            4
+        ],
+        "arrow-body-style": [
+            "error",
+            "as-needed"
+        ],
+        "no-tabs": 0,
+        "import/prefer-default-export": 0,
+        "no-console": 0,
+        "max-len": [
+            "error",
+            {
+                "code": 150
+            }
+        ],
+        "@typescript-eslint/no-floating-promises": [
+            "error",
+            {
+                "ignoreVoid": true
+            }
+        ],
+        "@typescript-eslint/no-unsafe-member-access": 0,
+        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/no-unsafe-assignment": 0,
+        "@typescript-eslint/no-misused-promises": 0,
+        "@typescript-eslint/require-await": 0,
+        "no-void": [
+            "error",
+            {
+                "allowAsStatement": true
+            }
+        ],
+        "no-return-await": 0,
+        "class-methods-use-this": 0,
+        "no-await-in-loop": 0,
+        "no-plusplus": 0,
+        "no-namespace": 0,
+        "@typescript-eslint/no-namespace": 0,
+        "@typescript-eslint/no-empty-interface": 0,
+        "no-inner-declarations": 0,
+        "no-bitwise": 0,
+        "prefer-destructuring": 0,
+        "@typescript-eslint/camelcase": 0,
+        "arrow-parens": 0,
+        "import/order": 0,
+        "@typescript-eslint/comma-dangle": 0,
+        "no-continue": 0,
+        "require-jsdoc": [
+            "off"
+        ],
+        "no-trailing-spaces": [
+            "error"
+        ],
+        "@typescript-eslint/strict-boolean-expressions": 0,
+        "@typescript-eslint/semi": 0,
+        "@typescript-eslint/consistent-type-imports": 0,
+        "@typescript-eslint/no-useless-constructor": 0
+    }
+}

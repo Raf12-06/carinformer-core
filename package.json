@@ -1,0 +1,30 @@
+{
+  "name": "carinformer-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc-watch --onSuccess \"node ./build/index.js\"",
+    "build": "./node_modules/.bin/tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/create-config": "^0.4.2",
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "eslint": "^8.32.0",
+    "eslint-config-standard-with-typescript": "^32.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "tsc-watch": "^6.0.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.9.0",
+    "nd-srv": "0.0.7",
+    "prisma": "^4.9.0"
+  }
+}
