@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="00ebde78-1620-4587-b960-4bfc7f680500" name="Changes" comment="" />
+    <list default="true" id="00ebde78-1620-4587-b960-4bfc7f680500" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/carinformer-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/carinformer-core.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,6 +59,7 @@
       <workItem from="1674655999659" duration="710000" />
       <workItem from="1674660847749" duration="2600000" />
       <workItem from="1674740754293" duration="8847000" />
+      <workItem from="1674749643469" duration="89000" />
     </task>
     <servers />
   </component>
