@@ -1,5 +1,4 @@
 import { Client } from '../../system/client';
-import { Car } from '../../service/car/carQuery';
 
 export const adminRout = {
     router: {
@@ -34,8 +33,8 @@ export const adminRout = {
                         console.log('preHandler');
                     },
                     handler: async (data: any) => {
-                        const car = new Car();
-                        return await car.createCar();
+                        // const car = new Car();
+                        // return await car.createCar();
                     },
                     postHandler: async (client: Client) => {
                         // client.setCookie('mark', client.body.name);

@@ -7,6 +7,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Model {
+  id                Int                 @id @default(autoincrement())
+  name              String              @unique @db.VarChar(15)
+  ModelModification ModelModification[]
+}
+
+model Modification {
+  id                Int                 @id @default(autoincrement())
+  name              String              @unique @db.VarChar(15)
+  ModelModification ModelModification[]
+}
+
+model ModelModification {
+  id Int @id @default(autoincrement())
+
+  modifications  Modification @relation(fields: [modificationId], references: [id])
+  modificationId Int
+
+  models    Model       @relation(fields: [modelId], references: [id])
+  modelId   Int
+  MarkModel MarkModel[]
+
+  @@unique([modificationId, modelId])
+}
+
 model Mark {
   id          Int         @id @default(autoincrement())
   name        String      @unique @db.VarChar(15)
@@ -14,41 +39,37 @@ model Mark {
   MarkModel   MarkModel[]
 }
 
-model Model {
-  id          Int         @id @default(autoincrement())
-  name        String      @unique @db.VarChar(15)
-  description String      @db.Text
-  MarkModel   MarkModel[]
-}
-
 model MarkModel {
-  id      Int   @id @default(autoincrement())
-  marks   Mark  @relation(fields: [markId], references: [id])
-  markId  Int
-  models  Model @relation(fields: [modelId], references: [id])
-  modelId Int
-  Car     Car[]
+  id Int @id @default(autoincrement())
 
-  @@unique([markId, modelId])
+  marks  Mark @relation(fields: [markId], references: [id])
+  markId Int
+
+  modelModifications  ModelModification @relation(fields: [modelModificationId], references: [id])
+  modelModificationId Int
+
+  Car Car[]
+
+  @@unique([markId, modelModificationId])
 }
 
 model Car {
   id Int @id @default(autoincrement())
 
-  MarkModel   MarkModel? @relation(fields: [markModelId], references: [id])
-  markModelId Int?
+  markModels  MarkModel @relation(fields: [markModelId], references: [id])
+  markModelId Int
 
-  Engine   Engine? @relation(fields: [engineId], references: [id])
-  engineId Int?
+  engines  Engine @relation(fields: [engineId], references: [id])
+  engineId Int
 
   @@unique([markModelId, engineId])
 }
 
 model Engine {
-  id             Int     @id @default(autoincrement())
-  name           String  @unique @db.VarChar(15)
-  volume         Int     @db.UnsignedInt
-  horsepower     Int     @db.UnsignedInt
-  medium_expense Decimal @db.Decimal(10, 1)
-  Car            Car[]
+  id            Int     @id @default(autoincrement())
+  name          String  @unique @db.VarChar(15)
+  volume        Int     @db.UnsignedInt
+  horsepower    Int     @db.UnsignedInt
+  mediumExpense Decimal @db.Decimal(10, 1)
+  Car           Car[]
 }
