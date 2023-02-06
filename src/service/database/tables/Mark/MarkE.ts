@@ -1,17 +1,16 @@
 import { Schema } from 'nd-srv';
 
-export interface ModificationEntity {
+export interface MarkI {
     id: number
     name: string
 }
 
-export const modificationRules: Schema = {
+export const MarkScheme: Schema = {
     name: {
         type: 'string',
-        require: true,
         reference: {
-            min: 10,
+            min: 3,
             max: 15,
         }
     }
-}
+};
