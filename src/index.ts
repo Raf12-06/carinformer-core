@@ -1,7 +1,7 @@
 import { Server } from 'nd-srv';
 import { Client } from './system/client';
 import { mainRouter } from './api/router';
-import http from 'http'
+import http from 'http';
 
 const server = new Server({
     app: http.createServer(),

@@ -19,7 +19,7 @@ export class MarkS {
         return await this.markSQL.edit(id, validData);
     }
 
-    public async delete(id: number): Promise<MarkI> {
+    public async del(id: number): Promise<MarkI> {
         return await this.markSQL.delete(id);
     }
 }

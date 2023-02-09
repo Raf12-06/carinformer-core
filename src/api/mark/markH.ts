@@ -52,7 +52,7 @@ export const markDelH = {
     async handler(data: Mark.del.Request): Promise<Mark.del.Response> {
         const markS = new MarkS();
         const idMark = data.id;
-        const mark = await markS.delete(idMark);
+        const mark = await markS.del(idMark);
         return {
             mark,
         }

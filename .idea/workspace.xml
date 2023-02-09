@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="00ebde78-1620-4587-b960-4bfc7f680500" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/mark/markH.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/mark/markI.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/mark/markV.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/mark/markR.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/mark/markR.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/database/tables/Mark/MarkSQL.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/database/tables/Mark/MarkSQL.ts" afterDir="false" />
-    </list>
+    <list default="true" id="00ebde78-1620-4587-b960-4bfc7f680500" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +70,7 @@
       <workItem from="1675695629472" duration="4052000" />
       <workItem from="1675780127333" duration="892000" />
       <workItem from="1675956246818" duration="655000" />
-      <workItem from="1675957128642" duration="5745000" />
+      <workItem from="1675957128642" duration="6161000" />
     </task>
     <servers />
   </component>
