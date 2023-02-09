@@ -1,64 +1,47 @@
-import { Client } from '../../system/client';
-import { MarkSQL } from '../../service/database/tables/Mark/MarkSQL';
+import { markGetAllH, markCreateH, markEditH, markDelH, markFindH } from './markH';
+import { markEditV, markCreateV, markDelV, markFindV } from './markV';
+import { Mark } from './markI';
 
 export const markR = {
     router: {
+        '/': {
+            url: Mark.getAll.url,
+            method: 'GET',
+            preHandler: markGetAllH.preHandler,
+            handler: markGetAllH.handler,
+            postHandler: markGetAllH.postHandler,
+        },
         '/create': {
-            url: '/api/mark/create',
+            url: Mark.create.url,
             method: 'POST',
-            schema: {
-                name: {
-                    type: 'string',
-                    require: true,
-                    reference: {
-                        length: {
-                            min: 3,
-                            max: 15,
-                        }
-                    }
-                }
-            },
-            async preHandler(client: Client): Promise<void> {
-
-            },
-            async handler(data: any): Promise<any> {
-                const { name } = data;
-                const markSQL = new MarkSQL();
-                return await markSQL.create({ name });
-            },
-            async postHandler(client: Client): Promise<void> {
-
-            }
+            schema: markCreateV,
+            preHandler: markCreateH.preHandler,
+            handler: markCreateH.handler,
+            postHandler: markCreateH.postHandler,
         },
         '/edit': {
-            url: '/api/mark/edit',
+            url: Mark.edit.url,
             method: 'POST',
-            schema: {
-                id: {
-                    type: 'number',
-                    require: true,
-                    reference: {
-                        length: {
-                            min: 1
-                        }
-                    }
-                },
-                name: {
-                    type: 'string',
-                    require: true,
-                    reference: {
-                        length: {
-                            min: 3,
-                            max: 15,
-                        }
-                    }
-                }
-            },
-            async handler(data: any): Promise<any> {
-                const markSQL = new MarkSQL();
-                const idMark = data.id;
-                return await markSQL.edit(idMark, data);
-            }
+            schema: markEditV,
+            preHandler: markEditH.preHandler,
+            handler: markEditH.handler,
+            postHandler: markEditH.postHandler,
+        },
+        '/del': {
+            url: Mark.del.url,
+            method: 'POST',
+            schema: markDelV,
+            preHandler: markDelH.preHandler,
+            handler: markDelH.handler,
+            postHandler: markDelH.postHandler,
+        },
+        '/find': {
+            url: Mark.find.url,
+            method: 'POST',
+            schema: markFindV,
+            preHandler: markFindH.preHandler,
+            handler: markFindH.handler,
+            postHandler: markFindH.postHandler,
         }
     }
 }
