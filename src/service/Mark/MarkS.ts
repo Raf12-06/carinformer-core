@@ -1,4 +1,4 @@
-import { MarkI } from '../database/tables/Mark/MarkE';
+import { MarkI, MarkScheme } from '../database/tables/Mark/MarkE';
 import { Validator } from 'nd-srv';
 import { MarkSQL } from '../database/tables/Mark/MarkSQL';
 
@@ -9,13 +9,13 @@ export class MarkS {
         this.markSQL = new MarkSQL();
     }
 
-    public async create(data: { name: string }): Promise<MarkI> {
-        const validData = Validator.validate({ name: { type: 'string' } }, data);
+    public async create(data: Partial<MarkI>): Promise<MarkI> {
+        const validData = Validator.validate(MarkScheme, data);
         return await this.markSQL.create({ name: validData.name });
     }
 
-    public async edit(id: number, data: { name: string }): Promise<MarkI> {
-        const validData = Validator.validate({ name: { type: 'string' } }, data);
+    public async edit(id: number, data: Partial<MarkI>): Promise<MarkI> {
+        const validData = Validator.validate(MarkScheme, data);
         return await this.markSQL.edit(id, validData);
     }
 

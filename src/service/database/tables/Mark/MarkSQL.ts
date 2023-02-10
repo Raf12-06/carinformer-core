@@ -3,13 +3,27 @@ import { MarkI, MarkScheme } from './MarkE';
 import { Validator } from 'nd-srv';
 
 export class MarkSQL extends BaseSQL {
-    public async select(): Promise<MarkI[]> {
-        return await this.db.mark.findMany({
-            select: {
-                id: true,
-                name: true,
-            }
-        })
+    public async select(idMark?: number): Promise<MarkI[]> {
+        let listMark = null;
+        if (idMark) {
+            listMark = await this.db.mark.findMany({
+                where: {
+                    id: idMark,
+                },
+                select: {
+                    id: true,
+                    name: true,
+                }
+            })
+        } else {
+            listMark = await this.db.mark.findMany({
+                select: {
+                    id: true,
+                    name: true,
+                }
+            })
+        }
+        return listMark;
     }
 
     public async create(data: Partial<MarkI>): Promise<MarkI> {

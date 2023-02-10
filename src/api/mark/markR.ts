@@ -1,15 +1,15 @@
-import { markGetAllH, markCreateH, markEditH, markDelH, markFindH } from './markH';
+import { markGetH, markCreateH, markEditH, markDelH, markFindH } from './markH';
 import { markEditV, markCreateV, markDelV, markFindV } from './markV';
 import { Mark } from './markI';
 
 export const markR = {
     router: {
         '/': {
-            url: Mark.getAll.url,
+            url: Mark.get.url,
             method: 'GET',
-            preHandler: markGetAllH.preHandler,
-            handler: markGetAllH.handler,
-            postHandler: markGetAllH.postHandler,
+            preHandler: markGetH.preHandler,
+            handler: markGetH.handler,
+            postHandler: markGetH.postHandler,
         },
         '/create': {
             url: Mark.create.url,

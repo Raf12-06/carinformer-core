@@ -2,13 +2,18 @@ import { Client } from '../../system/client';
 import { MarkS } from '../../service/Mark/MarkS';
 import { Mark } from './markI';
 import { MarkSQL } from '../../service/database/tables/Mark/MarkSQL';
+import { ReqHandler } from 'nd-srv';
 
-export const markGetAllH = {
+export const markGetH = {
     async preHandler(client: Client) {
     },
-    async handler(data: Mark.getAll.Request): Promise<Mark.getAll.Response> {
+    async handler(data: Mark.get.Request, req: ReqHandler): Promise<Mark.get.Response> {
+        let idMark = 0;
+        if (req.query?.id) {
+            idMark = Number(req.query.id);
+        }
         const markSQL = new MarkSQL();
-        const listMark = await markSQL.select();
+        const listMark = await markSQL.select(idMark);
         return {
             list_mark: listMark,
         }
@@ -21,8 +26,10 @@ export const markCreateH = {
     async preHandler(client: Client) {
     },
     async handler(data: Mark.create.Request): Promise<Mark.create.Response> {
+        console.log(data);
         const markS = new MarkS();
-        const mark = await markS.create({ name: data.name });
+        const name = data.name.toLowerCase();
+        const mark = await markS.create({ name });
         return {
             mark,
         }
@@ -66,7 +73,8 @@ export const markFindH = {
     },
     async handler(data: Mark.find.Request): Promise<Mark.find.Response> {
         const markSQL = new MarkSQL();
-        const listMark = await markSQL.findMatch(data.name);
+        const name = data.name.toLowerCase();
+        const listMark = await markSQL.findMatch(name);
         return {
             list_mark: listMark,
         }

@@ -1,65 +1,56 @@
-import { MarkI } from '../../service/database/tables/Mark/MarkE';
+import { ModelI } from '../../service/database/tables/Model/ModelE';
 
-export namespace Mark {
+export namespace Model {
 
     export namespace get {
-
-        export const url = '/api/mark/get';
-
+        export const url = '/api/model';
         export interface Request {
         }
-
         export interface Response {
-            list_mark: MarkI[]
+            list_model: ModelI[]
         }
     }
 
     export namespace create {
-
-        export const url = '/api/mark/create';
-
+        export const url = '/api/model/create';
         export interface Request {
+            markId: number
             name: string
         }
         export interface Response {
-            mark: MarkI
+            model: ModelI
         }
     }
 
     export namespace edit {
-
-        export const url = '/api/mark/edit';
-
+        export const url = '/api/model/edit';
         export interface Request {
             id: number
             name: string
+            markId?: number
         }
         export interface Response {
-            mark: MarkI
+            model: ModelI
         }
     }
 
     export namespace del {
-
-        export const url = '/api/mark/del';
-
+        export const url = '/api/model/del';
         export interface Request {
             id: number
         }
         export interface Response {
-            mark: MarkI
+            model: ModelI
         }
     }
 
     export namespace find {
-
-        export const url = '/api/mark/find';
-
+        export const url = '/api/model/find';
         export interface Request {
             name: string
         }
         export interface Response {
-            list_mark: MarkI[]
+            list_model: ModelI[]
         }
     }
 }
