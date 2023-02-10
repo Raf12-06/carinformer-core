@@ -8,12 +8,18 @@ export const modelGetH = {
     async preHandler(client: Client) {
     },
     async handler(data: Model.get.Request, req: ReqHandler): Promise<Model.get.Response> {
-        let idModel = 0;
-        if (req.query?.id) {
-            idModel = Number(req.query.id);
-        }
         const modelSQL = new ModelSQL();
-        const listModel = await modelSQL.select(idModel);
+        let listModel = [];
+
+        if (req.query?.name) {
+            const modelName = req.query?.name;
+            listModel = await modelSQL.findMatch(modelName);
+        } else if (req.query?.id) {
+            const idModel = Number(req.query.id);
+            listModel = await modelSQL.select(idModel);
+        } else {
+            listModel = await modelSQL.select();
+        }
         return {
             list_model: listModel,
         }

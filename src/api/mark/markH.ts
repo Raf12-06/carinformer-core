@@ -8,12 +8,19 @@ export const markGetH = {
     async preHandler(client: Client) {
     },
     async handler(data: Mark.get.Request, req: ReqHandler): Promise<Mark.get.Response> {
-        let idMark = 0;
-        if (req.query?.id) {
-            idMark = Number(req.query.id);
-        }
         const markSQL = new MarkSQL();
-        const listMark = await markSQL.select(idMark);
+        let listMark = [];
+
+        if (req.query?.name) {
+            const markName = req.query?.name;
+            listMark = await markSQL.findMatch(markName);
+        } else if (req.query?.id) {
+            const idMark = Number(req.query.id);
+            listMark = await markSQL.select(idMark);
+        } else {
+            listMark = await markSQL.select();
+        }
+
         return {
             list_mark: listMark,
         }
@@ -26,7 +33,6 @@ export const markCreateH = {
     async preHandler(client: Client) {
     },
     async handler(data: Mark.create.Request): Promise<Mark.create.Response> {
-        console.log(data);
         const markS = new MarkS();
         const name = data.name.toLowerCase();
         const mark = await markS.create({ name });
