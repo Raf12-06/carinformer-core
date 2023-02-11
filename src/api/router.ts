@@ -3,6 +3,7 @@ import { markR } from './mark/markR';
 import { modelR } from './model/modelR';
 import { modificationR } from './modification/modificationR';
 import { bodyR } from './body/bodyR';
+import { engineR } from './engine/engineR';
 
 export const mainRouter = new Router({
     '/api': {
@@ -11,7 +12,7 @@ export const mainRouter = new Router({
             '/model': modelR,
             '/modification': modificationR,
             '/body': bodyR,
-            '/engine': {},
+            '/engine': engineR,
             '/car': {},
         }
     }

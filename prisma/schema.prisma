@@ -9,7 +9,7 @@ datasource db {
 
 model Mark {
   id    Int     @id @default(autoincrement())
-  name  String  @unique @db.VarChar(15)
+  name  String  @unique @db.VarChar(20)
   Model Model[]
 }
 
@@ -17,7 +17,7 @@ model Model {
   id           Int            @id @default(autoincrement())
   marks        Mark           @relation(fields: [markId], references: [id])
   markId       Int
-  name         String         @unique @db.VarChar(15)
+  name         String         @unique @db.VarChar(20)
   Modification Modification[]
   ModleBody    ModelBody[]
 }
@@ -26,7 +26,7 @@ model Modification {
   id      Int    @id @default(autoincrement())
   models  Model  @relation(fields: [modelId], references: [id])
   modelId Int
-  name    String @unique @db.VarChar(15)
+  name    String @unique @db.VarChar(20)
 }
 
 model Body {
@@ -45,8 +45,8 @@ model ModelBody {
 
 model Engine {
   id            Int     @id @default(autoincrement())
-  name          String  @unique @db.VarChar(15)
-  volume        Int     @db.UnsignedInt
+  name          String  @unique @db.VarChar(20)
+  volume        Decimal @db.Decimal(10, 1)
   horsepower    Int     @db.UnsignedInt
   mediumExpense Decimal @db.Decimal(10, 1)
 }
