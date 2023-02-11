@@ -70,6 +70,7 @@
         "@typescript-eslint/semi": 0,
         "@typescript-eslint/consistent-type-imports": 0,
         "@typescript-eslint/no-useless-constructor": 0,
-        "@typescript-eslint/space-before-function-paren": 0
+        "@typescript-eslint/space-before-function-paren": 0,
+        "@typescript-eslint/return-await": 0
     }
 }

@@ -4,7 +4,7 @@ export namespace Mark {
 
     export namespace get {
 
-        export const url = '/api/mark/get';
+        export const url = '/api/mark';
 
         export interface Request {
         }

@@ -19,6 +19,7 @@ model Model {
   markId       Int
   name         String         @unique @db.VarChar(15)
   Modification Modification[]
+  ModleBody    ModelBody[]
 }
 
 model Modification {
@@ -26,6 +27,20 @@ model Modification {
   models  Model  @relation(fields: [modelId], references: [id])
   modelId Int
   name    String @unique @db.VarChar(15)
+}
+
+model Body {
+  id        Int         @id @default(autoincrement())
+  name      String      @unique @db.VarChar(15)
+  ModelBody ModelBody[]
+}
+
+model ModelBody {
+  id      Int   @id @default(autoincrement())
+  models  Model @relation(fields: [modelId], references: [id])
+  modelId Int
+  bodys   Body  @relation(fields: [bodyId], references: [id])
+  bodyId  Int
 }
 
 model Engine {
