@@ -10,7 +10,7 @@ export const BodyScheme: Schema = {
         type: 'string',
         reference: {
             min: 3,
-            max: 15,
+            max: 20,
         }
     }
 }

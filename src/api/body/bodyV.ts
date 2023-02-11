@@ -5,7 +5,7 @@ export const bodyCreateV = {
         reference: {
             length: {
                 min: 3,
-                max: 10
+                max: 20
             }
         }
     }
@@ -54,7 +54,7 @@ export const bodyFindV = {
 }
 
 export const bodyAddBodyToModelV = {
-    modeId: {
+    modelId: {
         type: 'number',
         require: true,
         reference: {
