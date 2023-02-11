@@ -11,6 +11,7 @@ model Mark {
   id    Int     @id @default(autoincrement())
   name  String  @unique @db.VarChar(20)
   Model Model[]
+  Car   Car[]
 }
 
 model Model {
@@ -20,6 +21,7 @@ model Model {
   name         String         @unique @db.VarChar(20)
   Modification Modification[]
   ModleBody    ModelBody[]
+  Car          Car[]
 }
 
 model Modification {
@@ -27,12 +29,14 @@ model Modification {
   models  Model  @relation(fields: [modelId], references: [id])
   modelId Int
   name    String @unique @db.VarChar(20)
+  Car     Car[]
 }
 
 model Body {
   id        Int         @id @default(autoincrement())
   name      String      @unique @db.VarChar(20)
   ModelBody ModelBody[]
+  Car       Car[]
 }
 
 model ModelBody {
@@ -49,4 +53,19 @@ model Engine {
   volume        Int
   horsepower    Int     @db.UnsignedInt
   mediumExpense Decimal @db.Decimal(10, 1)
+  Car           Car[]
+}
+
+model Car {
+  id             Int          @id @default(autoincrement())
+  marks          Mark         @relation(fields: [markId], references: [id])
+  markId         Int
+  models         Model        @relation(fields: [modelId], references: [id])
+  modelId        Int
+  modifications  Modification @relation(fields: [modificationId], references: [id])
+  modificationId Int
+  bodys          Body         @relation(fields: [bodyId], references: [id])
+  bodyId         Int
+  engines        Engine       @relation(fields: [engineId], references: [id])
+  engineId       Int
 }
