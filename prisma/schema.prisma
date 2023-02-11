@@ -46,7 +46,7 @@ model ModelBody {
 model Engine {
   id            Int     @id @default(autoincrement())
   name          String  @unique @db.VarChar(20)
-  volume        Decimal @db.Decimal(10, 1)
+  volume        Int
   horsepower    Int     @db.UnsignedInt
   mediumExpense Decimal @db.Decimal(10, 1)
 }

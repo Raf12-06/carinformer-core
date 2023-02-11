@@ -6,7 +6,7 @@ export const engineR = {
     router: {
         '/': {
             url: Engine.get.url,
-            method: 'POST',
+            method: 'GET',
             preHandler: engineGetH.preHandler,
             handler: engineGetH.handler,
             postHandler: engineGetH.postHandler,

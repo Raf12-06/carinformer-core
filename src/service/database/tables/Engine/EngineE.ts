@@ -1,17 +1,17 @@
 import { Schema } from 'nd-srv';
+import { Decimal } from '@prisma/client/runtime';
 
 export interface EngineI {
     id: number
     name: string
-    volume: number
+    volume: Decimal | number
     horsepower: number
-    mediumExpense: number
+    mediumExpense: Decimal | number
 }
 
 export const EngineScheme: Schema = {
     name: {
         type: 'string',
-        require: true,
         reference: {
             length: {
                 min: 5,
@@ -21,17 +21,15 @@ export const EngineScheme: Schema = {
     },
     volume: {
         type: 'number',
-        require: true,
         reference: {
             length: {
                 min: 0,
-                max: 10,
+                max: 50000,
             }
         }
     },
     horsepower: {
         type: 'number',
-        require: true,
         reference: {
             length: {
                 min: 0,
@@ -41,7 +39,6 @@ export const EngineScheme: Schema = {
     },
     mediumExpense: {
         type: 'number',
-        require: true,
         reference: {
             length: {
                 min: 0,
