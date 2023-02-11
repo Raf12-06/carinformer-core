@@ -3,10 +3,15 @@ import { Validator } from 'nd-srv';
 import { CarI, CarSchemeInsert, CarSchemeUpdate } from './CarE';
 
 export class CarSQL extends BaseSQL {
-    public async select(idCar: number): Promise<CarI[]> {
+    public async select(data: Partial<CarI>): Promise<CarI[]> {
         return await this.db.car.findMany({
             where: {
-                id: idCar,
+                id: data?.id,
+                markId: data?.markId,
+                modelId: data?.modelId,
+                modificationId: data?.modificationId,
+                bodyId: data?.bodyId,
+                engineId: data?.engineId
             }
         })
     }

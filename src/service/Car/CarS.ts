@@ -5,6 +5,7 @@ import { ModificationSQL } from '../database/tables/Modification/ModificationSQL
 import { BodySQL } from '../database/tables/Body/BodySQL';
 import { CarI, CarSchemeInsert, CarSchemeUpdate } from '../database/tables/Car/CarE';
 import { Validator } from 'nd-srv';
+import { UserCarSQL } from '../database/tables/UserCar/UserCarSQL';
 
 export class CarS {
     private readonly carSQL: CarSQL;
@@ -12,6 +13,7 @@ export class CarS {
     private readonly modelSQL: ModelSQL;
     private readonly modificationSQL: ModificationSQL;
     private readonly bodySQL: BodySQL;
+    private readonly userCarSQL: UserCarSQL;
 
     constructor() {
         this.carSQL = new CarSQL();
@@ -19,6 +21,7 @@ export class CarS {
         this.modelSQL = new ModelSQL();
         this.modificationSQL = new ModificationSQL();
         this.bodySQL = new BodySQL();
+        this.userCarSQL = new UserCarSQL();
     }
 
     public async create(data: Partial<CarI>): Promise<CarI> {

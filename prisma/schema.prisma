@@ -68,4 +68,12 @@ model Car {
   bodyId         Int
   engines        Engine       @relation(fields: [engineId], references: [id])
   engineId       Int
+  UserCar        UserCar[]
+}
+
+model UserCar {
+  id     Int @id @default(autoincrement())
+  userId Int
+  cars   Car @relation(fields: [carId], references: [id])
+  carId  Int
 }
