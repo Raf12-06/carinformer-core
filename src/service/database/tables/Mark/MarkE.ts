@@ -9,8 +9,10 @@ export const MarkScheme: Schema = {
     name: {
         type: 'string',
         reference: {
-            min: 3,
-            max: 15,
+            length: {
+                min: 3,
+                max: 15,
+            }
         }
     }
 };

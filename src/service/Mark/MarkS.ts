@@ -10,12 +10,12 @@ export class MarkS {
     }
 
     public async create(data: Partial<MarkI>): Promise<MarkI> {
-        const validData = Validator.validate(MarkScheme, data);
+        const validData = Validator.validate(MarkScheme, data, 'MarkS.create');
         return await this.markSQL.create({ name: validData.name });
     }
 
     public async edit(id: number, data: Partial<MarkI>): Promise<MarkI> {
-        const validData = Validator.validate(MarkScheme, data);
+        const validData = Validator.validate(MarkScheme, data, 'MarkS.edit');
         return await this.markSQL.edit(id, validData);
     }
 

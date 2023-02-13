@@ -9,8 +9,10 @@ export const BodyScheme: Schema = {
     name: {
         type: 'string',
         reference: {
-            min: 3,
-            max: 20,
+            length: {
+                min: 3,
+                max: 20,
+            }
         }
     }
 }

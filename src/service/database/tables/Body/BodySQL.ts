@@ -27,7 +27,7 @@ export class BodySQL extends BaseSQL {
     }
 
     public async create(data: Partial<BodyI>): Promise<BodyI> {
-        const { name } = Validator.validate(BodyScheme, data);
+        const { name } = Validator.validate(BodyScheme, data, 'BodySQL.create');
         return await this.db.body.create({
             data: {
                 name,
@@ -36,7 +36,7 @@ export class BodySQL extends BaseSQL {
     }
 
     public async edit(idBody: number, data: Partial<BodyI>): Promise<BodyI> {
-        const validData = Validator.validate(BodyScheme, data);
+        const validData = Validator.validate(BodyScheme, data, 'BodySQL.edit');
         return await this.db.body.update({
             where: {
                 id: idBody,

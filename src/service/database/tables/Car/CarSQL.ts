@@ -17,7 +17,7 @@ export class CarSQL extends BaseSQL {
     }
 
     public async create(data: Partial<CarI>): Promise<CarI> {
-        const validData = Validator.validate(CarSchemeInsert, data);
+        const validData = Validator.validate(CarSchemeInsert, data, 'CarSQL.create');
         return await this.db.car.create({
             data: {
                 ...validData
@@ -26,7 +26,7 @@ export class CarSQL extends BaseSQL {
     }
 
     public async edit(idCar: number, data: Partial<CarI>): Promise<CarI> {
-        const validData = Validator.validate(CarSchemeUpdate, data);
+        const validData = Validator.validate(CarSchemeUpdate, data, 'CarSQL.edit');
         return await this.db.car.update({
             where: {
                 id: idCar,

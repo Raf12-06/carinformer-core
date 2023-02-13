@@ -1,9 +1,9 @@
 import { Client } from '../../system/client';
 import { Body } from './bodyI';
 import { BodySQL } from '../../service/database/tables/Body/BodySQL';
-import { ReqHandler } from 'nd-srv';
 import { BodyS } from '../../service/Body/BodyS';
 import { ModelBodySQL } from '../../service/database/tables/ModelBody/ModelBodySQL';
+import { ReqHandler } from 'nd-srv';
 
 export const bodyGetH = {
     async preHandler(client: Client) {

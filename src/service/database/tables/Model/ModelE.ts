@@ -17,8 +17,10 @@ export const ModelScheme: Schema = {
         type: 'string',
         require: true,
         reference: {
-            min: 3,
-            max: 15,
+            length: {
+                min: 3,
+                max: 15,
+            }
         }
     }
 };

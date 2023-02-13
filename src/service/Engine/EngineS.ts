@@ -10,12 +10,12 @@ export class EngineS {
     }
 
     public async create(data: Partial<EngineI>): Promise<EngineI> {
-        const validData = Validator.validate(EngineScheme, data);
+        const validData = Validator.validate(EngineScheme, data, 'EngineS.create');
         return await this.engineSQL.create(validData);
     }
 
     public async edit(idEngine: number, data: Partial<EngineI>): Promise<EngineI> {
-        const validData = Validator.validate(EngineScheme, data);
+        const validData = Validator.validate(EngineScheme, data, 'EngineS.edit');
         return await this.engineSQL.edit(idEngine, validData);
     }
 

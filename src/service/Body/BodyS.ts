@@ -14,12 +14,12 @@ export class BodyS {
     }
 
     public async create(data: Partial<BodyI>): Promise<BodyI> {
-        const validData = Validator.validate(BodyScheme, data);
+        const validData = Validator.validate(BodyScheme, data, 'BodyS.create');
         return await this.bodySQL.create(validData);
     }
 
     public async edit(idBody: number, data: Partial<BodyI>): Promise<BodyI> {
-        const validData = Validator.validate(BodyScheme, data);
+        const validData = Validator.validate(BodyScheme, data, 'BodyS.edit');
         return await this.bodySQL.edit(idBody, validData);
     }
 
@@ -28,7 +28,7 @@ export class BodyS {
     }
 
     public async addBodyInModel(data: Partial<ModelBodyI>): Promise<ModelBodyI> {
-        const validData = Validator.validate(ModelBodyScheme, data);
+        const validData = Validator.validate(ModelBodyScheme, data, 'BodyS.addBodyInModel');
         return await this.modelBodySQL.create(validData);
     }
 

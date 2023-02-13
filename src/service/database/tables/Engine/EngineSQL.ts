@@ -33,7 +33,7 @@ export class EngineSQL extends BaseSQL {
     }
 
     public async create(data: Partial<EngineI>): Promise<EngineI> {
-        const validData = Validator.validate(EngineScheme, data);
+        const validData = Validator.validate(EngineScheme, data, 'EngineSQL.create');
         return await this.db.engine.create({
             data: {
                 ...validData,
@@ -42,7 +42,7 @@ export class EngineSQL extends BaseSQL {
     }
 
     public async edit(idEngine: number, data: Partial<EngineI>): Promise<EngineI> {
-        const validData = Validator.validate(EngineScheme, data);
+        const validData = Validator.validate(EngineScheme, data, 'EngineSQL.edit');
         return await this.db.engine.update({
             where: {
                 id: idEngine,

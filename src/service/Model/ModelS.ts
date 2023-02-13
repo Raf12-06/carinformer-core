@@ -10,12 +10,12 @@ export class ModelS {
     }
 
     public async create(data: Partial<ModelI>): Promise<ModelI> {
-        const validData = Validator.validate(ModelScheme, data);
+        const validData = Validator.validate(ModelScheme, data, 'ModelS.create');
         return await this.modelSQL.create({ markId: validData.markId, name: validData.name });
     }
 
     public async edit(id: number, data: Partial<ModelI>): Promise<ModelI> {
-        const validData = Validator.validate(ModelScheme, data);
+        const validData = Validator.validate(ModelScheme, data, 'ModelS.edit');
         return await this.modelSQL.edit(id, validData);
     }
 

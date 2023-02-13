@@ -29,7 +29,7 @@ export class ModificationSQL extends BaseSQL {
     }
 
     public async create(data: Partial<ModificationI>): Promise<ModificationI> {
-        const { modelId, name } = Validator.validate(ModificationScheme, data);
+        const { modelId, name } = Validator.validate(ModificationScheme, data, 'ModificationSQL.create');
         return await this.db.modification.create({
             data: {
                 modelId,
@@ -39,7 +39,7 @@ export class ModificationSQL extends BaseSQL {
     }
 
     public async edit(idModification: number, data: Partial<ModificationI>): Promise<ModificationI> {
-        const validData = Validator.validate(ModificationScheme, data);
+        const validData = Validator.validate(ModificationScheme, data, 'ModificationSQL.edit');
         return await this.db.modification.update({
             where: {
                 id: idModification,

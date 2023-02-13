@@ -25,12 +25,12 @@ export class CarS {
     }
 
     public async create(data: Partial<CarI>): Promise<CarI> {
-        const validData = Validator.validate(CarSchemeInsert, data);
+        const validData = Validator.validate(CarSchemeInsert, data, 'CarS.create');
         return await this.carSQL.create(validData);
     }
 
     public async edit(idCar: number, data: Partial<CarI>): Promise<CarI> {
-        const validData = Validator.validate(CarSchemeUpdate, data);
+        const validData = Validator.validate(CarSchemeUpdate, data, 'CarS.edit');
         return await this.carSQL.edit(idCar, validData);
     }
 

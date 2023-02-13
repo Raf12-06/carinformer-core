@@ -12,7 +12,7 @@ export class ModelBodySQL extends BaseSQL {
     }
 
     public async create(data: Partial<ModelBodyI>): Promise<ModelBodyI> {
-        const validData = Validator.validate(ModelBodyScheme, data);
+        const validData = Validator.validate(ModelBodyScheme, data, 'ModelBodySQL.create');
         return await this.db.modelBody.create({
             data: {
                 ...validData

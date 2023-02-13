@@ -17,7 +17,7 @@ export class UserCarS {
     }
 
     public async create(data: Partial<CarI>): Promise<UserCarI> {
-        const validData = Validator.validate(CarSchemeInsert, data);
+        const validData = Validator.validate(CarSchemeInsert, data, 'UserCarS.create');
         const newCar = {
             markId: validData.markId,
             modelId: validData.modelId,
@@ -44,7 +44,7 @@ export class UserCarS {
     }
 
     public async edit(idUserCar: number, data: Partial<CarI>): Promise<UserCarI> {
-        const validData = Validator.validate(CarSchemeUpdate, data);
+        const validData = Validator.validate(CarSchemeUpdate, data, 'UserCarS.edit');
 
         const listCurrUserCar = await this.userCarSQL.select({
             id: idUserCar

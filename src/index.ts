@@ -1,12 +1,12 @@
-import { Server } from 'nd-srv';
+import { Srv } from 'nd-srv';
 import { Client } from './system/client';
 import { mainRouter } from './api/router';
 import http from 'http';
 
-const server = new Server({
+const server = new Srv({
     app: http.createServer(),
     router: mainRouter,
-    context: Client
+    context: Client,
 })
 
 server.request(req => {
@@ -21,4 +21,8 @@ server.response((err, res, data) => {
 
     res.end(data)
 });
-server.start(8000)
+
+const PORT = 8000;
+server.start(PORT, () => {
+    console.log(`Server started on ${PORT}`);
+})

@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@prisma/client": "^4.9.0",
-    "nd-srv": "0.0.7",
+    "nd-srv": "1.0.3",
     "prisma": "^4.9.0"
   }
 }

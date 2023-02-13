@@ -27,7 +27,7 @@ export class MarkSQL extends BaseSQL {
     }
 
     public async create(data: Partial<MarkI>): Promise<MarkI> {
-        const { name } = Validator.validate(MarkScheme, data);
+        const { name } = Validator.validate(MarkScheme, data, 'MarkSQL.create');
         return await this.db.mark.create({
             data: {
                 name,
@@ -36,7 +36,7 @@ export class MarkSQL extends BaseSQL {
     }
 
     public async edit(idMark: number, data: Partial<MarkI>): Promise<MarkI> {
-        const validData = Validator.validate(MarkScheme, data);
+        const validData = Validator.validate(MarkScheme, data, 'MarkSQL.edit');
         return await this.db.mark.update({
             where: {
                 id: idMark,
