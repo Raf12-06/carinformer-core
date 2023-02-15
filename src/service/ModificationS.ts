@@ -1,6 +1,6 @@
 import { Validator } from 'nd-srv';
-import { ModificationSQL } from './ModificationSQL';
-import { ModificationI, ModificationSchemeUpdate, ModificationSchemeInsert } from './ModificationE';
+import { ModificationSQL } from '../database/Modification/ModificationSQL';
+import { ModificationI, ModificationSchemeUpdate, ModificationSchemeInsert } from '../database/Modification/ModificationE';
 
 export class ModificationS {
     private readonly modificationSQL: ModificationSQL;

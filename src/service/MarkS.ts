@@ -1,6 +1,6 @@
-import { MarkI, MarkSchemeInsert, MarkSchemeUpdate } from './MarkE';
+import { MarkI, MarkSchemeInsert, MarkSchemeUpdate } from '../database/Mark/MarkE';
 import { Validator } from 'nd-srv';
-import { MarkSQL } from './MarkSQL';
+import { MarkSQL } from '../database/Mark/MarkSQL';
 
 export class MarkS {
     private readonly markSQL: MarkSQL;

@@ -1,7 +1,7 @@
 import { Client } from '../../system/client';
 import { Body } from './bodyI';
-import { BodySQL } from '../../service/Body/BodySQL';
-import { BodyS } from '../../service/Body/BodyS';
+import { BodySQL } from '../../database/Body/BodySQL';
+import { BodyS } from '../../service/BodyS';
 import { ReqHandler } from 'nd-srv';
 
 export const bodyGetH = {

@@ -1,8 +1,8 @@
 import { Client } from '../../system/client';
 import { ReqHandler } from 'nd-srv';
 import { Engine } from './engineI';
-import { EngineSQL } from '../../service/Engine/EngineSQL';
-import { EngineS } from '../../service/Engine/EngineS';
+import { EngineSQL } from '../../database/Engine/EngineSQL';
+import { EngineS } from '../../service/EngineS';
 
 export const engineGetH = {
     async preHandler(client: Client) {

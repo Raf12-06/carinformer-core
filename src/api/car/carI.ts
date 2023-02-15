@@ -1,4 +1,4 @@
-import { CarI } from '../../service/Car/CarE';
+import { CarI } from '../../database/Car/CarE';
 
 export namespace Car {
 

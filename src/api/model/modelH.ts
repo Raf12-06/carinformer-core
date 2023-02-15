@@ -1,8 +1,8 @@
 import { Client } from '../../system/client';
 import { ReqHandler } from 'nd-srv';
 import { Model } from './modelI';
-import { ModelSQL } from '../../service/Model/ModelSQL';
-import { ModelS } from '../../service/Model/ModelS';
+import { ModelSQL } from '../../database/Model/ModelSQL';
+import { ModelS } from '../../service/ModelS';
 
 export const modelGetH = {
     async preHandler(client: Client) {

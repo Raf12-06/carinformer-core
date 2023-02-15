@@ -51,11 +51,64 @@ model Engine {
 }
 
 model Car {
-  id             Int          @id @default(autoincrement())
-  modifications  Modification @relation(fields: [modificationId], references: [id])
-  modificationId Int
-  bodys          Body         @relation(fields: [bodyId], references: [id])
-  bodyId         Int
-  engines        Engine       @relation(fields: [engineId], references: [id])
-  engineId       Int
+  id                Int                 @id @default(autoincrement())
+  modifications     Modification        @relation(fields: [modificationId], references: [id])
+  modificationId    Int
+  bodys             Body                @relation(fields: [bodyId], references: [id])
+  bodyId            Int
+  engines           Engine              @relation(fields: [engineId], references: [id])
+  engineId          Int
+  km                Int
+  Refill            Refill[]
+  Replacement       Replacement[]
+  ReplacementOption ReplacementOption[]
+}
+
+model Fuel {
+  id     Int      @id @default(autoincrement())
+  name   String
+  Refill Refill[]
+}
+
+model Refill {
+  id      Int      @id @default(autoincrement())
+  cars    Car      @relation(fields: [carId], references: [id])
+  carId   Int
+  km      Int
+  payment Int
+  liter   Int
+  price   Int
+  fuels   Fuel     @relation(fields: [fuelId], references: [id])
+  fuelId  Int
+  date    DateTime
+  desc    String
+}
+
+model ReplacementOption {
+  id                Int             @id @default(autoincrement())
+  cars              Car             @relation(fields: [carId], references: [id])
+  carId             Int
+  ReplacementTypes  ReplacementType @relation(fields: [replacementTypeId], references: [id])
+  replacementTypeId Int
+  repalceEvenKm     Int
+}
+
+model ReplacementType {
+  id                Int                 @id @default(autoincrement())
+  name              String
+  Replacement       Replacement[]
+  ReplacementOption ReplacementOption[]
+}
+
+model Replacement {
+  id                Int             @id @default(autoincrement())
+  cars              Car             @relation(fields: [carId], references: [id])
+  carId             Int
+  ReplacementTypes  ReplacementType @relation(fields: [replacementTypeId], references: [id])
+  replacementTypeId Int
+  km                Int
+  payment           Int
+  oil               String
+  date              DateTime
+  desc              String
 }

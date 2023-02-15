@@ -1,5 +1,5 @@
-import { CarSQL } from './CarSQL';
-import { CarI, CarSchemeInsert } from './CarE';
+import { CarSQL } from '../database/Car/CarSQL';
+import { CarI, CarSchemeInsert } from '../database/Car/CarE';
 import { Validator } from 'nd-srv';
 
 export class CarS {

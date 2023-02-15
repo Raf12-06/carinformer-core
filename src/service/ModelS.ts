@@ -1,6 +1,6 @@
-import { ModelSQL } from './ModelSQL';
+import { ModelSQL } from '../database/Model/ModelSQL';
 import { Validator } from 'nd-srv';
-import { ModelI, ModelSchemeInsert, ModelSchemeUpdate } from './ModelE';
+import { ModelI, ModelSchemeInsert, ModelSchemeUpdate } from '../database/Model/ModelE';
 
 export class ModelS {
     private readonly modelSQL: ModelSQL;

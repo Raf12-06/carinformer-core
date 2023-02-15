@@ -1,4 +1,4 @@
-import { BodyI } from '../../service/Body/BodyE';
+import { BodyI } from '../../database/Body/BodyE';
 
 export namespace Body {
     export namespace get {

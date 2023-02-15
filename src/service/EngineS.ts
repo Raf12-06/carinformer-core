@@ -1,6 +1,6 @@
-import { EngineSQL } from './EngineSQL';
+import { EngineSQL } from '../database/Engine/EngineSQL';
 import { Validator } from 'nd-srv';
-import { EngineI, EngineSchemeInsert, EngineSchemeUpdate } from './EngineE';
+import { EngineI, EngineSchemeInsert, EngineSchemeUpdate } from '../database/Engine/EngineE';
 
 export class EngineS {
     private readonly engineSQL: EngineSQL;

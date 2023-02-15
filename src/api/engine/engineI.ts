@@ -1,4 +1,4 @@
-import { EngineI } from '../../service/Engine/EngineE';
+import { EngineI } from '../../database/Engine/EngineE';
 
 export namespace Engine {
     export namespace get {

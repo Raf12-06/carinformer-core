@@ -1,7 +1,7 @@
 import { Client } from '../../system/client';
 import { Car } from './carI';
 import { ReqHandler } from 'nd-srv';
-import { CarSQL } from '../../service/Car/CarSQL';
+import { CarSQL } from '../../database/Car/CarSQL';
 
 export const carGetH = {
     async preHandler(client: Client) {

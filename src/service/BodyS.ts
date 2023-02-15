@@ -1,6 +1,6 @@
-import { BodySQL } from './BodySQL';
+import { BodySQL } from '../database/Body/BodySQL';
 import { Validator } from 'nd-srv';
-import { BodyI, BodySchemeUpdate, BodySchemeInsert } from './BodyE';
+import { BodyI, BodySchemeUpdate, BodySchemeInsert } from '../database/Body/BodyE';
 
 export class BodyS {
     private readonly bodySQL: BodySQL;

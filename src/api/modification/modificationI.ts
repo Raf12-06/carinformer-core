@@ -1,4 +1,4 @@
-import { ModificationI } from '../../service/Modification/ModificationE';
+import { ModificationI } from '../../database/Modification/ModificationE';
 
 export namespace Modification {
 

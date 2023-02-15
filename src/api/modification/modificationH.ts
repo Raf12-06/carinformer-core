@@ -1,8 +1,8 @@
 import { Client } from '../../system/client';
 import { ReqHandler } from 'nd-srv';
 import { Modification } from './modificationI';
-import { ModificationSQL } from '../../service/Modification/ModificationSQL';
-import { ModificationS } from '../../service/Modification/ModificationS';
+import { ModificationSQL } from '../../database/Modification/ModificationSQL';
+import { ModificationS } from '../../service/ModificationS';
 
 export const modificationGetH = {
     async preHandler(client: Client) {
