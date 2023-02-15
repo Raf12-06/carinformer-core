@@ -1,7 +1,7 @@
 import { Client } from '../../system/client';
 import { MarkS } from '../../service/Mark/MarkS';
 import { Mark } from './markI';
-import { MarkSQL } from '../../service/database/tables/Mark/MarkSQL';
+import { MarkSQL } from '../../service/Mark/MarkSQL';
 import { ReqHandler } from 'nd-srv';
 
 export const markGetH = {

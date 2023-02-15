@@ -1,13 +1,14 @@
 import { Schema } from 'nd-srv';
 
-export interface ModelBodyI {
+export interface CarI {
     id: number
-    modelId: number
+    modificationId: number
     bodyId: number
+    engineId: number
 }
 
-export const ModelBodyScheme: Schema = {
-    modelId: {
+export const CarSchemeInsert: Schema = {
+    modificationId: {
         type: 'number',
         require: true,
         reference: {
@@ -15,6 +16,13 @@ export const ModelBodyScheme: Schema = {
         }
     },
     bodyId: {
+        type: 'number',
+        require: true,
+        reference: {
+            ID: true,
+        }
+    },
+    engineId: {
         type: 'number',
         require: true,
         reference: {

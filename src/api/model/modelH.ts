@@ -1,7 +1,7 @@
 import { Client } from '../../system/client';
 import { ReqHandler } from 'nd-srv';
 import { Model } from './modelI';
-import { ModelSQL } from '../../service/database/tables/Model/ModelSQL';
+import { ModelSQL } from '../../service/Model/ModelSQL';
 import { ModelS } from '../../service/Model/ModelS';
 
 export const modelGetH = {

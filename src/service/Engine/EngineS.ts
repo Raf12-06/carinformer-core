@@ -1,6 +1,6 @@
-import { EngineSQL } from '../database/tables/Engine/EngineSQL';
+import { EngineSQL } from './EngineSQL';
 import { Validator } from 'nd-srv';
-import { EngineI, EngineScheme } from '../database/tables/Engine/EngineE';
+import { EngineI, EngineSchemeInsert, EngineSchemeUpdate } from './EngineE';
 
 export class EngineS {
     private readonly engineSQL: EngineSQL;
@@ -10,12 +10,12 @@ export class EngineS {
     }
 
     public async create(data: Partial<EngineI>): Promise<EngineI> {
-        const validData = Validator.validate(EngineScheme, data, 'EngineS.create');
+        const validData = Validator.validate(EngineSchemeInsert, data, 'EngineS.create');
         return await this.engineSQL.create(validData);
     }
 
     public async edit(idEngine: number, data: Partial<EngineI>): Promise<EngineI> {
-        const validData = Validator.validate(EngineScheme, data, 'EngineS.edit');
+        const validData = Validator.validate(EngineSchemeUpdate, data, 'EngineS.edit');
         return await this.engineSQL.edit(idEngine, validData);
     }
 

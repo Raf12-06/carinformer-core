@@ -1,21 +1,16 @@
 import { Body } from './bodyI';
 import {
-    bodyAddBodyToModelH,
     bodyCreateH,
-    bodyDelBodyFromModelH,
     bodyDelH,
     bodyEditH,
     bodyFindH,
-    bodyGetH, bodyGetModelBodiesH
+    bodyGetH,
 } from './bodyH';
 import {
-    bodyAddBodyToModelV,
     bodyCreateV,
-    bodyDelBodyFromModelV,
     bodyDelV,
     bodyEditV,
     bodyFindV,
-    bodyGetModelBodiesV
 } from './bodyV';
 
 export const bodyR = {
@@ -59,29 +54,5 @@ export const bodyR = {
             handler: bodyFindH.handler,
             postHandler: bodyFindH.postHandler,
         },
-        '/add-body-to-model': {
-            url: Body.addBodyToModel.url,
-            method: 'POST',
-            schema: bodyAddBodyToModelV,
-            preHandler: bodyAddBodyToModelH.preHandler,
-            handler: bodyAddBodyToModelH.handler,
-            postHandler: bodyAddBodyToModelH.postHandler,
-        },
-        '/del-body-from-model': {
-            url: Body.delBodyFromModel.url,
-            method: 'POST',
-            schema: bodyDelBodyFromModelV,
-            preHandler: bodyDelBodyFromModelH.preHandler,
-            handler: bodyDelBodyFromModelH.handler,
-            postHandler: bodyDelBodyFromModelH.postHandler,
-        },
-        '/get-model-bodies': {
-            url: Body.getModelBodies.url,
-            method: 'POST',
-            schema: bodyGetModelBodiesV,
-            preHandler: bodyGetModelBodiesH.preHandler,
-            handler: bodyGetModelBodiesH.handler,
-            postHandler: bodyGetModelBodiesH.postHandler,
-        }
     }
 }

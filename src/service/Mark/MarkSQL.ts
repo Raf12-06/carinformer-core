@@ -1,5 +1,5 @@
-import { BaseSQL } from '../../ConnectDB';
-import { MarkI, MarkScheme } from './MarkE';
+import { BaseSQL } from '../../system/ConnectDB';
+import { MarkI, MarkSchemeInsert, MarkSchemeUpdate } from './MarkE';
 import { Validator } from 'nd-srv';
 
 export class MarkSQL extends BaseSQL {
@@ -27,7 +27,7 @@ export class MarkSQL extends BaseSQL {
     }
 
     public async create(data: Partial<MarkI>): Promise<MarkI> {
-        const { name } = Validator.validate(MarkScheme, data, 'MarkSQL.create');
+        const { name } = Validator.validate(MarkSchemeInsert, data, 'MarkSQL.create');
         return await this.db.mark.create({
             data: {
                 name,
@@ -36,7 +36,7 @@ export class MarkSQL extends BaseSQL {
     }
 
     public async edit(idMark: number, data: Partial<MarkI>): Promise<MarkI> {
-        const validData = Validator.validate(MarkScheme, data, 'MarkSQL.edit');
+        const validData = Validator.validate(MarkSchemeUpdate, data, 'MarkSQL.edit');
         return await this.db.mark.update({
             where: {
                 id: idMark,

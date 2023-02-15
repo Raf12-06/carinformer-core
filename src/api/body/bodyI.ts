@@ -1,5 +1,4 @@
-import { BodyI } from '../../service/database/tables/Body/BodyE';
-import { ModelBodyI } from '../../service/database/tables/ModelBody/ModelBodyE';
+import { BodyI } from '../../service/Body/BodyE';
 
 export namespace Body {
     export namespace get {
@@ -18,6 +17,7 @@ export namespace Body {
         export const url = '/api/body/create';
         export interface Request {
             name: string
+            modelId: number
         }
         export interface Response {
             body: BodyI
@@ -29,6 +29,7 @@ export namespace Body {
         export interface Request {
             bodyId: number
             name: string
+            modelId: number
         }
         export interface Response {
             body: BodyI
@@ -52,37 +53,6 @@ export namespace Body {
         }
         export interface Response {
             list_body: BodyI[]
-        }
-    }
-
-    export namespace addBodyToModel {
-        export const url = '/api/body/add-body-to-model';
-        export interface Request {
-            modelId: number
-            bodyId: number
-        }
-        export interface Response {
-            model_body: ModelBodyI
-        }
-    }
-
-    export namespace delBodyFromModel {
-        export const url = '/api/body/del-body-from-model';
-        export interface Request {
-            modelBodyId: number
-        }
-        export interface Response {
-            model_body: ModelBodyI
-        }
-    }
-
-    export namespace getModelBodies {
-        export const url = '/api/body/get-model-bodies';
-        export interface Request {
-            modelId: number
-        }
-        export interface Response {
-            list_model_body: ModelBodyI[]
         }
     }
 }

@@ -6,7 +6,27 @@ export interface ModelI {
     name: string
 }
 
-export const ModelScheme: Schema = {
+export const ModelSchemeInsert: Schema = {
+    markId: {
+        type: 'number',
+        require: true,
+        reference: {
+            ID: true,
+        }
+    },
+    name: {
+        type: 'string',
+        require: true,
+        reference: {
+            length: {
+                min: 3,
+                max: 15,
+            }
+        }
+    }
+};
+
+export const ModelSchemeUpdate: Schema = {
     markId: {
         type: 'number',
         reference: {
@@ -15,7 +35,6 @@ export const ModelScheme: Schema = {
     },
     name: {
         type: 'string',
-        require: true,
         reference: {
             length: {
                 min: 3,

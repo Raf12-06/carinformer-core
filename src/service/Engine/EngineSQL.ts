@@ -1,10 +1,10 @@
-import { BaseSQL } from '../../ConnectDB';
+import { BaseSQL } from '../../system/ConnectDB';
 import { Validator } from 'nd-srv';
-import { EngineI, EngineScheme } from './EngineE';
+import { EngineI, EngineSchemeInsert, EngineSchemeUpdate } from './EngineE';
 
 export class EngineSQL extends BaseSQL {
     public async select(idEngine?: number): Promise<EngineI[]> {
-        let listEngine = [];
+        let listEngine: EngineI[] = [];
         if (idEngine) {
             listEngine = await this.db.engine.findMany({
                 where: {
@@ -16,6 +16,7 @@ export class EngineSQL extends BaseSQL {
                     volume: true,
                     horsepower: true,
                     mediumExpense: true,
+                    markId: true,
                 }
             })
         } else {
@@ -26,6 +27,7 @@ export class EngineSQL extends BaseSQL {
                     volume: true,
                     horsepower: true,
                     mediumExpense: true,
+                    markId: true,
                 }
             })
         }
@@ -33,7 +35,7 @@ export class EngineSQL extends BaseSQL {
     }
 
     public async create(data: Partial<EngineI>): Promise<EngineI> {
-        const validData = Validator.validate(EngineScheme, data, 'EngineSQL.create');
+        const validData = Validator.validate(EngineSchemeInsert, data, 'EngineSQL.create');
         return await this.db.engine.create({
             data: {
                 ...validData,
@@ -42,7 +44,7 @@ export class EngineSQL extends BaseSQL {
     }
 
     public async edit(idEngine: number, data: Partial<EngineI>): Promise<EngineI> {
-        const validData = Validator.validate(EngineScheme, data, 'EngineSQL.edit');
+        const validData = Validator.validate(EngineSchemeUpdate, data, 'EngineSQL.edit');
         return await this.db.engine.update({
             where: {
                 id: idEngine,

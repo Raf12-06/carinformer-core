@@ -6,7 +6,7 @@ export interface ModificationI {
     name: string
 }
 
-export const ModificationScheme: Schema = {
+export const ModificationSchemeInsert: Schema = {
     modelId: {
         type: 'number',
         reference: {
@@ -16,6 +16,24 @@ export const ModificationScheme: Schema = {
     name: {
         type: 'string',
         require: true,
+        reference: {
+            length: {
+                min: 3,
+                max: 15,
+            }
+        }
+    }
+}
+
+export const ModificationSchemeUpdate: Schema = {
+    modelId: {
+        type: 'number',
+        reference: {
+            ID: true,
+        }
+    },
+    name: {
+        type: 'string',
         reference: {
             length: {
                 min: 3,

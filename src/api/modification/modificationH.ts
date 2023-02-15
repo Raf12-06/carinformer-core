@@ -1,7 +1,7 @@
 import { Client } from '../../system/client';
 import { ReqHandler } from 'nd-srv';
 import { Modification } from './modificationI';
-import { ModificationSQL } from '../../service/database/tables/Modification/ModificationSQL';
+import { ModificationSQL } from '../../service/Modification/ModificationSQL';
 import { ModificationS } from '../../service/Modification/ModificationS';
 
 export const modificationGetH = {

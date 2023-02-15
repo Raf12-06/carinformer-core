@@ -8,10 +8,10 @@ datasource db {
 }
 
 model Mark {
-  id    Int     @id @default(autoincrement())
-  name  String  @unique @db.VarChar(20)
-  Model Model[]
-  Car   Car[]
+  id     Int      @id @default(autoincrement())
+  name   String   @unique @db.VarChar(20)
+  Model  Model[]
+  Engine Engine[]
 }
 
 model Model {
@@ -20,8 +20,7 @@ model Model {
   markId       Int
   name         String         @unique @db.VarChar(20)
   Modification Modification[]
-  ModleBody    ModelBody[]
-  Car          Car[]
+  Body         Body[]
 }
 
 model Modification {
@@ -33,18 +32,11 @@ model Modification {
 }
 
 model Body {
-  id        Int         @id @default(autoincrement())
-  name      String      @unique @db.VarChar(20)
-  ModelBody ModelBody[]
-  Car       Car[]
-}
-
-model ModelBody {
-  id      Int   @id @default(autoincrement())
-  models  Model @relation(fields: [modelId], references: [id])
+  id      Int    @id @default(autoincrement())
+  name    String @unique @db.VarChar(20)
+  models  Model  @relation(fields: [modelId], references: [id])
   modelId Int
-  bodys   Body  @relation(fields: [bodyId], references: [id])
-  bodyId  Int
+  Car     Car[]
 }
 
 model Engine {
@@ -53,27 +45,17 @@ model Engine {
   volume        Int
   horsepower    Int     @db.UnsignedInt
   mediumExpense Decimal @db.Decimal(10, 1)
+  marks         Mark    @relation(fields: [markId], references: [id])
+  markId        Int
   Car           Car[]
 }
 
 model Car {
   id             Int          @id @default(autoincrement())
-  marks          Mark         @relation(fields: [markId], references: [id])
-  markId         Int
-  models         Model        @relation(fields: [modelId], references: [id])
-  modelId        Int
   modifications  Modification @relation(fields: [modificationId], references: [id])
   modificationId Int
   bodys          Body         @relation(fields: [bodyId], references: [id])
   bodyId         Int
   engines        Engine       @relation(fields: [engineId], references: [id])
   engineId       Int
-  UserCar        UserCar[]
-}
-
-model UserCar {
-  id     Int @id @default(autoincrement())
-  userId Int
-  cars   Car @relation(fields: [carId], references: [id])
-  carId  Int
 }

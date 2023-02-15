@@ -4,6 +4,7 @@ import { modelR } from './model/modelR';
 import { modificationR } from './modification/modificationR';
 import { bodyR } from './body/bodyR';
 import { engineR } from './engine/engineR';
+import { carR } from './car/carR';
 
 export const mainRouter = new Router({
     '/api': {
@@ -13,7 +14,7 @@ export const mainRouter = new Router({
             '/modification': modificationR,
             '/body': bodyR,
             '/engine': engineR,
-            '/car': {},
+            '/car': carR,
         }
     }
 });

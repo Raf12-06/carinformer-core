@@ -1,4 +1,4 @@
-import { MarkI } from '../../service/database/tables/Mark/MarkE';
+import { MarkI } from '../../service/Mark/MarkE';
 
 export namespace Mark {
 

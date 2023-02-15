@@ -1,9 +1,8 @@
 import { Client } from '../../system/client';
 import { ReqHandler } from 'nd-srv';
 import { Engine } from './engineI';
-import { EngineSQL } from '../../service/database/tables/Engine/EngineSQL';
+import { EngineSQL } from '../../service/Engine/EngineSQL';
 import { EngineS } from '../../service/Engine/EngineS';
-import { Decimal } from '@prisma/client/runtime';
 
 export const engineGetH = {
     async preHandler(client: Client) {
@@ -40,7 +39,8 @@ export const engineCreateH = {
             name: data.name,
             volume: data.volume,
             horsepower: data.horsepower,
-            mediumExpense: data.mediumExpense
+            mediumExpense: data.mediumExpense,
+            markId: data.markId
         });
         return {
             engine

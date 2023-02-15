@@ -1,6 +1,6 @@
-import { BaseSQL } from '../../ConnectDB';
+import { BaseSQL } from '../../system/ConnectDB';
 import { Validator } from 'nd-srv';
-import { ModificationI, ModificationScheme } from './ModificationE';
+import { ModificationI, ModificationSchemeUpdate, ModificationSchemeInsert } from './ModificationE';
 
 export class ModificationSQL extends BaseSQL {
     public async select(idModification?: number): Promise<ModificationI[]> {
@@ -29,7 +29,7 @@ export class ModificationSQL extends BaseSQL {
     }
 
     public async create(data: Partial<ModificationI>): Promise<ModificationI> {
-        const { modelId, name } = Validator.validate(ModificationScheme, data, 'ModificationSQL.create');
+        const { modelId, name } = Validator.validate(ModificationSchemeInsert, data, 'ModificationSQL.create');
         return await this.db.modification.create({
             data: {
                 modelId,
@@ -39,7 +39,7 @@ export class ModificationSQL extends BaseSQL {
     }
 
     public async edit(idModification: number, data: Partial<ModificationI>): Promise<ModificationI> {
-        const validData = Validator.validate(ModificationScheme, data, 'ModificationSQL.edit');
+        const validData = Validator.validate(ModificationSchemeUpdate, data, 'ModificationSQL.edit');
         return await this.db.modification.update({
             where: {
                 id: idModification,

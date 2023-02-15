@@ -1,6 +1,6 @@
-import { ModelSQL } from '../database/tables/Model/ModelSQL';
+import { ModelSQL } from './ModelSQL';
 import { Validator } from 'nd-srv';
-import { ModelI, ModelScheme } from '../database/tables/Model/ModelE';
+import { ModelI, ModelSchemeInsert, ModelSchemeUpdate } from './ModelE';
 
 export class ModelS {
     private readonly modelSQL: ModelSQL;
@@ -10,12 +10,12 @@ export class ModelS {
     }
 
     public async create(data: Partial<ModelI>): Promise<ModelI> {
-        const validData = Validator.validate(ModelScheme, data, 'ModelS.create');
+        const validData = Validator.validate(ModelSchemeInsert, data, 'ModelS.create');
         return await this.modelSQL.create({ markId: validData.markId, name: validData.name });
     }
 
     public async edit(id: number, data: Partial<ModelI>): Promise<ModelI> {
-        const validData = Validator.validate(ModelScheme, data, 'ModelS.edit');
+        const validData = Validator.validate(ModelSchemeUpdate, data, 'ModelS.edit');
         return await this.modelSQL.edit(id, validData);
     }
 

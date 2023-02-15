@@ -1,5 +1,5 @@
-import { BaseSQL } from '../../ConnectDB';
-import { ModelI, ModelScheme } from './ModelE';
+import { BaseSQL } from '../../system/ConnectDB';
+import { ModelI, ModelSchemeUpdate, ModelSchemeInsert } from './ModelE';
 import { Validator } from 'nd-srv';
 
 export class ModelSQL extends BaseSQL {
@@ -29,7 +29,7 @@ export class ModelSQL extends BaseSQL {
     }
 
     public async create(data: Partial<ModelI>): Promise<ModelI> {
-        const { markId, name } = Validator.validate(ModelScheme, data, 'ModelSQL.create');
+        const { markId, name } = Validator.validate(ModelSchemeInsert, data, 'ModelSQL.create');
         return await this.db.model.create({
             data: {
                 markId,
@@ -39,7 +39,7 @@ export class ModelSQL extends BaseSQL {
     }
 
     public async edit(idModel: number, data: Partial<ModelI>): Promise<ModelI> {
-        const validData = Validator.validate(ModelScheme, data, 'ModelSQL.edit');
+        const validData = Validator.validate(ModelSchemeUpdate, data, 'ModelSQL.edit');
         return await this.db.model.update({
             where: {
                 id: idModel,

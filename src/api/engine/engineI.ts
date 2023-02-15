@@ -1,4 +1,4 @@
-import { EngineI } from '../../service/database/tables/Engine/EngineE';
+import { EngineI } from '../../service/Engine/EngineE';
 
 export namespace Engine {
     export namespace get {
@@ -17,6 +17,7 @@ export namespace Engine {
             volume: number
             horsepower: number
             mediumExpense: number
+            markId: number
         }
         export interface Response {
             engine: EngineI

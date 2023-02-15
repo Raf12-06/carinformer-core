@@ -1,6 +1,6 @@
-import { MarkI, MarkScheme } from '../database/tables/Mark/MarkE';
+import { MarkI, MarkSchemeInsert, MarkSchemeUpdate } from './MarkE';
 import { Validator } from 'nd-srv';
-import { MarkSQL } from '../database/tables/Mark/MarkSQL';
+import { MarkSQL } from './MarkSQL';
 
 export class MarkS {
     private readonly markSQL: MarkSQL;
@@ -10,12 +10,12 @@ export class MarkS {
     }
 
     public async create(data: Partial<MarkI>): Promise<MarkI> {
-        const validData = Validator.validate(MarkScheme, data, 'MarkS.create');
+        const validData = Validator.validate(MarkSchemeInsert, data, 'MarkS.create');
         return await this.markSQL.create({ name: validData.name });
     }
 
     public async edit(id: number, data: Partial<MarkI>): Promise<MarkI> {
-        const validData = Validator.validate(MarkScheme, data, 'MarkS.edit');
+        const validData = Validator.validate(MarkSchemeUpdate, data, 'MarkS.edit');
         return await this.markSQL.edit(id, validData);
     }
 

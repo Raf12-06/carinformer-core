@@ -1,10 +1,10 @@
-import { BaseSQL } from '../../ConnectDB';
+import { BaseSQL } from '../../system/ConnectDB';
 import { Validator } from 'nd-srv';
-import { BodyI, BodyScheme } from './BodyE';
+import { BodyI, BodySchemeUpdate, BodySchemeInsert } from './BodyE';
 
 export class BodySQL extends BaseSQL {
     public async select(idBody?: number): Promise<BodyI[]> {
-        let listBody = null;
+        let listBody: BodyI[] = [];
         if (idBody) {
             listBody = await this.db.body.findMany({
                 where: {
@@ -13,6 +13,7 @@ export class BodySQL extends BaseSQL {
                 select: {
                     id: true,
                     name: true,
+                    modelId: true
                 }
             })
         } else {
@@ -20,6 +21,7 @@ export class BodySQL extends BaseSQL {
                 select: {
                     id: true,
                     name: true,
+                    modelId: true,
                 }
             })
         }
@@ -27,16 +29,16 @@ export class BodySQL extends BaseSQL {
     }
 
     public async create(data: Partial<BodyI>): Promise<BodyI> {
-        const { name } = Validator.validate(BodyScheme, data, 'BodySQL.create');
+        const validData = Validator.validate(BodySchemeInsert, data, 'BodySQL.create');
         return await this.db.body.create({
             data: {
-                name,
+                ...validData
             }
         })
     }
 
     public async edit(idBody: number, data: Partial<BodyI>): Promise<BodyI> {
-        const validData = Validator.validate(BodyScheme, data, 'BodySQL.edit');
+        const validData = Validator.validate(BodySchemeUpdate, data, 'BodySQL.edit');
         return await this.db.body.update({
             where: {
                 id: idBody,

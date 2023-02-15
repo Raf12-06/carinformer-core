@@ -8,6 +8,13 @@ export const bodyCreateV = {
                 max: 20
             }
         }
+    },
+    modelId: {
+        type: 'number',
+        require: true,
+        reference: {
+            ID: true,
+        }
     }
 }
 
@@ -27,6 +34,12 @@ export const bodyEditV = {
                 min: 3,
                 max: 10
             }
+        }
+    },
+    modelId: {
+        type: 'number',
+        reference: {
+            ID: true,
         }
     }
 }
@@ -49,43 +62,6 @@ export const bodyFindV = {
             length: {
                 min: 2
             }
-        }
-    }
-}
-
-export const bodyAddBodyToModelV = {
-    modelId: {
-        type: 'number',
-        require: true,
-        reference: {
-            ID: true
-        }
-    },
-    bodyId: {
-        type: 'number',
-        require: true,
-        reference: {
-            ID: true
-        }
-    }
-}
-
-export const bodyDelBodyFromModelV = {
-    modelBodyId: {
-        type: 'number',
-        require: true,
-        reference: {
-            ID: true
-        }
-    }
-}
-
-export const bodyGetModelBodiesV = {
-    modelId: {
-        type: 'number',
-        require: true,
-        reference: {
-            ID: true
         }
     }
 }

@@ -1,4 +1,4 @@
-import { ModelI } from '../../service/database/tables/Model/ModelE';
+import { ModelI } from '../../service/Model/ModelE';
 
 export namespace Model {
 

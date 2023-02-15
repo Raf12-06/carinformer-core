@@ -1,6 +1,6 @@
 import { Validator } from 'nd-srv';
-import { ModificationSQL } from '../database/tables/Modification/ModificationSQL';
-import { ModificationI, ModificationScheme } from '../database/tables/Modification/ModificationE';
+import { ModificationSQL } from './ModificationSQL';
+import { ModificationI, ModificationSchemeUpdate, ModificationSchemeInsert } from './ModificationE';
 
 export class ModificationS {
     private readonly modificationSQL: ModificationSQL;
@@ -10,12 +10,12 @@ export class ModificationS {
     }
 
     public async create(data: Partial<ModificationI>): Promise<ModificationI> {
-        const validData = Validator.validate(ModificationScheme, data, 'ModificationS.create');
+        const validData = Validator.validate(ModificationSchemeInsert, data, 'ModificationS.create');
         return await this.modificationSQL.create({ modelId: validData.modelId, name: validData.name });
     }
 
     public async edit(id: number, data: Partial<ModificationI>): Promise<ModificationI> {
-        const validData = Validator.validate(ModificationScheme, data, 'ModificationS.edit');
+        const validData = Validator.validate(ModificationSchemeUpdate, data, 'ModificationS.edit');
         return await this.modificationSQL.edit(id, validData);
     }
 

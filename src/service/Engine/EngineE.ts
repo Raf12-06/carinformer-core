@@ -1,13 +1,25 @@
-export const engineCreateV = {
+import { Schema } from 'nd-srv';
+import { Decimal } from '@prisma/client/runtime';
+
+export interface EngineI {
+    id: number
+    name: string
+    volume: Decimal | number
+    horsepower: number
+    mediumExpense: Decimal | number
+    markId: number
+}
+
+export const EngineSchemeInsert: Schema = {
     name: {
         type: 'string',
         require: true,
         reference: {
             length: {
-                min: 2,
+                min: 5,
                 max: 20,
             }
-        },
+        }
     },
     volume: {
         type: 'number',
@@ -15,7 +27,7 @@ export const engineCreateV = {
         reference: {
             length: {
                 min: 0,
-                max: 10000,
+                max: 50000,
             }
         }
     },
@@ -25,7 +37,7 @@ export const engineCreateV = {
         reference: {
             length: {
                 min: 0,
-                max: 2000,
+                max: 1000,
             }
         }
     },
@@ -48,29 +60,22 @@ export const engineCreateV = {
     }
 }
 
-export const engineEditV = {
-    engineId: {
-        type: 'number',
-        require: true,
-        reference: {
-            ID: true,
-        }
-    },
+export const EngineSchemeUpdate: Schema = {
     name: {
         type: 'string',
         reference: {
             length: {
-                min: 2,
+                min: 5,
                 max: 20,
             }
-        },
+        }
     },
     volume: {
         type: 'number',
         reference: {
             length: {
                 min: 0,
-                max: 1000,
+                max: 50000,
             }
         }
     },
@@ -79,7 +84,7 @@ export const engineEditV = {
         reference: {
             length: {
                 min: 0,
-                max: 2000,
+                max: 1000,
             }
         }
     },
@@ -91,27 +96,11 @@ export const engineEditV = {
                 max: 100,
             }
         }
-    }
-}
-
-export const engineDelV = {
-    engineId: {
+    },
+    markId: {
         type: 'number',
-        require: true,
         reference: {
-            ID: true,
+            ID: true
         }
-    }
-}
-
-export const engineFindV = {
-    name: {
-        type: 'string',
-        reference: {
-            length: {
-                min: 2,
-                max: 20,
-            }
-        },
     }
 }

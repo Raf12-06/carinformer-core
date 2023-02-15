@@ -1,8 +1,7 @@
 import { Client } from '../../system/client';
 import { Body } from './bodyI';
-import { BodySQL } from '../../service/database/tables/Body/BodySQL';
+import { BodySQL } from '../../service/Body/BodySQL';
 import { BodyS } from '../../service/Body/BodyS';
-import { ModelBodySQL } from '../../service/database/tables/ModelBody/ModelBodySQL';
 import { ReqHandler } from 'nd-srv';
 
 export const bodyGetH = {
@@ -80,48 +79,6 @@ export const bodyFindH = {
         const listBody = await bodySQL.findMatch(data.name);
         return {
             list_body: listBody
-        }
-    },
-    async postHandler(client: Client) {
-    }
-}
-
-export const bodyAddBodyToModelH = {
-    async preHandler(client: Client) {
-    },
-    async handler(data: Body.addBodyToModel.Request): Promise<Body.addBodyToModel.Response> {
-        const bodyS = new BodyS();
-        const modelBody = await bodyS.addBodyInModel(data);
-        return {
-            model_body: modelBody
-        }
-    },
-    async postHandler(client: Client) {
-    }
-}
-
-export const bodyDelBodyFromModelH = {
-    async preHandler(client: Client) {
-    },
-    async handler(data: Body.delBodyFromModel.Request): Promise<Body.addBodyToModel.Response> {
-        const bodyS = new BodyS();
-        const modelBody = await bodyS.delBodyFromModel(data.modelBodyId);
-        return {
-            model_body: modelBody
-        }
-    },
-    async postHandler(client: Client) {
-    }
-}
-
-export const bodyGetModelBodiesH = {
-    async preHandler(client: Client) {
-    },
-    async handler(data: Body.getModelBodies.Request): Promise<Body.getModelBodies.Response> {
-        const modelBodySQL = new ModelBodySQL();
-        const listModelBody = await modelBodySQL.selectModelBodies(data.modelId);
-        return {
-            list_model_body: listModelBody
         }
     },
     async postHandler(client: Client) {
