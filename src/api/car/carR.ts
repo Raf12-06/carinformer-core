@@ -1,6 +1,6 @@
 import { Car } from './carI';
-import { carCreateH, carGetH } from './carH';
-import { carCreateV } from './carV';
+import { carCreateH, carGetH, setRefillH } from './carH';
+import { carCreateV, setRefillV } from './carV';
 
 export const carR = {
     router: {
@@ -18,6 +18,14 @@ export const carR = {
             preHandler: carCreateH.preHandler,
             handler: carCreateH.handler,
             postHandler: carCreateH.postHandler,
+        },
+        '/set-refill': {
+            url: Car.setRefill.url,
+            method: 'POST',
+            schema: setRefillV,
+            preHandler: setRefillH.preHandler,
+            handler: setRefillH.handler,
+            postHandler: setRefillH.postHandler,
         }
     }
 }

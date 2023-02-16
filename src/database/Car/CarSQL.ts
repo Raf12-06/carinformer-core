@@ -1,5 +1,5 @@
 import { BaseSQL } from '../../system/ConnectDB';
-import { CarI, CarSchemeInsert } from './CarE';
+import { CarI, CarSchemeInsert, CarSchemeUpdate } from './CarE';
 import { Validator } from 'nd-srv';
 
 export class CarSQL extends BaseSQL {
@@ -18,6 +18,18 @@ export class CarSQL extends BaseSQL {
                 ...validData
             }
         });
+    }
+
+    public async update(idCar: number, data: Partial<CarI>): Promise<CarI> {
+        const validData = Validator.validate(CarSchemeUpdate, data, 'CarSQL.update');
+        return await this.db.car.update({
+            where: {
+                id: idCar
+            },
+            data: {
+                ...validData
+            }
+        })
     }
 
     public async del(idCar: number): Promise<CarI> {

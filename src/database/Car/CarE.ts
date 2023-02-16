@@ -5,6 +5,7 @@ export interface CarI {
     modificationId: number
     bodyId: number
     engineId: number
+    km: number
 }
 
 export const CarSchemeInsert: Schema = {
@@ -29,4 +30,42 @@ export const CarSchemeInsert: Schema = {
             ID: true,
         }
     },
+    km: {
+        type: 'number',
+        default: 0,
+        reference: {
+            length: {
+                min: 0
+            }
+        }
+    }
+}
+
+export const CarSchemeUpdate: Schema = {
+    modificationId: {
+        type: 'number',
+        reference: {
+            ID: true,
+        }
+    },
+    bodyId: {
+        type: 'number',
+        reference: {
+            ID: true,
+        }
+    },
+    engineId: {
+        type: 'number',
+        reference: {
+            ID: true,
+        }
+    },
+    km: {
+        type: 'number',
+        reference: {
+            length: {
+                min: 0
+            }
+        }
+    }
 }

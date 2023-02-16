@@ -2,6 +2,7 @@ import { Client } from '../../system/client';
 import { Car } from './carI';
 import { ReqHandler } from 'nd-srv';
 import { CarSQL } from '../../database/Car/CarSQL';
+import { CarS } from '../../service/CarS';
 
 export const carGetH = {
     async preHandler(client: Client) {
@@ -26,6 +27,20 @@ export const carCreateH = {
         const car = await carSQL.create(data);
         return {
             car,
+        }
+    },
+    async postHandler(client: Client) {
+    }
+}
+
+export const setRefillH = {
+    async preHandler(client: Client) {
+    },
+    async handler(data: Car.setRefill.Request, req: ReqHandler): Promise<Car.setRefill.Response> {
+        const carS = new CarS();
+        const refill = await carS.setRefill(data);
+        return {
+            refill,
         }
     },
     async postHandler(client: Client) {

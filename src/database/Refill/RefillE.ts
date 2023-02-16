@@ -1,7 +1,8 @@
 import { Schema } from 'nd-srv';
+import { Decimal } from '@prisma/client/runtime';
 
 export interface RefillI {
-    id: number
+    id?: number
     carId: number
     km: number
     payment: number
@@ -10,6 +11,7 @@ export interface RefillI {
     fuelId: number
     date: string | Date
     desc: string
+    expense: number | Decimal
 }
 
 export const RefillSchemeInsert: Schema = {
@@ -34,6 +36,15 @@ export const RefillSchemeInsert: Schema = {
             ID: true,
         }
     },
+    price: {
+        type: 'number',
+        require: true,
+        reference: {
+            length: {
+                min: 0
+            }
+        }
+    },
     liter: {
         type: 'number',
         require: true,
@@ -52,7 +63,7 @@ export const RefillSchemeInsert: Schema = {
         type: 'string',
         default: '2023-02-15',
         reference: {
-            match: /^\d{4}-([0-1][0-9])-([0-3][0-9]) ([0-2][0-9]):([0-5][0-9]):([0-5][0-9])$/,
+            // match: /^\d{4}-([0-1][0-9])-([0-3][0-9]) ([0-2][0-9]):([0-5][0-9]):([0-5][0-9])$/,
         }
     },
     desc: {
@@ -60,6 +71,15 @@ export const RefillSchemeInsert: Schema = {
         reference: {
             length: {
                 max: 255,
+            }
+        }
+    },
+    expense: {
+        type: 'number',
+        require: true,
+        reference: {
+            length: {
+                min: 0
             }
         }
     }

@@ -82,6 +82,7 @@ model Refill {
   fuelId  Int
   date    DateTime
   desc    String
+  expense Decimal  @db.Decimal(10, 1)
 }
 
 model ReplacementOption {
