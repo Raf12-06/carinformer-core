@@ -18,9 +18,9 @@ export class RefillSql extends BaseSQL {
                 carId: idCar,
             },
             orderBy: {
-                date: 'desc'
+                km: 'asc'
             },
-            take: 1,
+            take: -1,
         })
     }
 }

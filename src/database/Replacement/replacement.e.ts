@@ -61,6 +61,7 @@ export const replacementInsert: Schema = {
     },
     date: {
         type: 'Date',
+        default: new Date()
     },
     desc: {
         type: 'string',
@@ -117,6 +118,7 @@ export const replacementUpdate: Schema = {
     },
     date: {
         type: 'Date',
+        default: new Date(),
     },
     desc: {
         type: 'string',

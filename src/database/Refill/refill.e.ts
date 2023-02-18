@@ -23,7 +23,7 @@ export interface RefillInsert {
     fuelId: number
     date: Date
     desc: string
-    expense: Decimal
+    expense: number
 }
 export const refillInsert: Schema = {
     carId: {
@@ -71,16 +71,24 @@ export const refillInsert: Schema = {
         }
     },
     date: {
-        type: 'string',
-        reference: {
-            // match: /^\d{4}-([0-1][0-9])-([0-3][0-9]) ([0-2][0-9]):([0-5][0-9]):([0-5][0-9])$/,
-        }
+        type: 'Date',
+        default: new Date()
     },
     desc: {
         type: 'string',
+        require: true,
         reference: {
             length: {
                 max: 255,
+            }
+        }
+    },
+    expense: {
+        type: 'number',
+        default: 0,
+        reference: {
+            length: {
+                min: 0
             }
         }
     }
@@ -95,7 +103,7 @@ export interface RefillUpdate {
     fuelId?: number
     date?: Date
     desc?: string
-    expense?: Decimal
+    expense?: number
 }
 export const refillUpdate: Schema = {
     carId: {
@@ -137,10 +145,8 @@ export const refillUpdate: Schema = {
         }
     },
     date: {
-        type: 'string',
-        reference: {
-            // match: /^\d{4}-([0-1][0-9])-([0-3][0-9]) ([0-2][0-9]):([0-5][0-9]):([0-5][0-9])$/,
-        }
+        type: 'Date',
+        default: new Date()
     },
     desc: {
         type: 'string',

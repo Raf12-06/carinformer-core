@@ -1,5 +1,5 @@
-import { carCreateH, carGetH, setRefillH } from './car.handler';
-import { carCreateDto, carSetRefillDto } from './car.dto';
+import { carCreateH, carGetH, setRefillH, setReplacementH } from './car.handler';
+import { carCreateDto, carSetRefillDto, carSetReplacementDto } from './car.dto';
 
 export const carRout = {
     router: {
@@ -22,6 +22,13 @@ export const carRout = {
             preHandler: setRefillH.preHandler,
             handler: setRefillH.handler,
             postHandler: setRefillH.postHandler,
+        },
+        '/set-replacement': {
+            method: 'POST',
+            schema: carSetReplacementDto,
+            preHandler: setReplacementH.preHandler,
+            handler: setReplacementH.handler,
+            postHandler: setReplacementH.postHandler,
         }
     }
 }

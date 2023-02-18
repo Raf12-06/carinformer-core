@@ -2,9 +2,13 @@ import { Client } from '../../system/client';
 import { ReqHandler } from 'nd-srv';
 import { CarSql } from '../../database/Car/car.sql';
 import { CarS } from '../../service/Car/car.s';
-import { CarCreateDto, CarGetDto, CarSetRefillDto } from './car.dto';
+import { CarCreateDto, CarGetDto, CarSetRefillDto, CarSetReplacementDto } from './car.dto';
 import { Car } from '../../database/Car/car.e';
 import { Refill } from '../../database/Refill/refill.e';
+import { RefillS } from '../../service/Refill/refill.s';
+import { ReplacementSql } from '../../database/Replacement/replacement.sql';
+import { ReplacementS } from '../../service/Replacement/replacement.s';
+import { Replacement } from '../../database/Replacement/replacement.e';
 
 export const carGetH = {
     async preHandler(client: Client) {
@@ -25,8 +29,8 @@ export const carCreateH = {
     async preHandler(client: Client) {
     },
     async handler(data: CarCreateDto): Promise<{ car: Car }> {
-        const carSQL = new CarSql();
-        const car = await carSQL.create(data);
+        const carS = new CarS();
+        const car = await carS.create(data);
         return {
             car,
         }
@@ -39,10 +43,24 @@ export const setRefillH = {
     async preHandler(client: Client) {
     },
     async handler(data: CarSetRefillDto): Promise<{ refill: Refill }> {
-        const carS = new CarS();
-        const refill = await carS.setRefill(data);
+        const refillS = new RefillS();
+        const refill = await refillS.set(data);
         return {
             refill,
+        }
+    },
+    async postHandler(client: Client) {
+    }
+}
+
+export const setReplacementH = {
+    async preHandler(client: Client) {
+    },
+    async handler(data: CarSetReplacementDto): Promise<{ replacement: Replacement }> {
+        const replacementS = new ReplacementS();
+        const replacement = await replacementS.set(data);
+        return {
+            replacement,
         }
     },
     async postHandler(client: Client) {

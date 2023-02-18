@@ -4,7 +4,7 @@ import { Validator } from 'nd-srv';
 
 export class CarSql extends BaseSQL {
     public async getById(idCar: number): Promise<Car | null> {
-        return await this.db.car.findUnique({
+        return await this.db.car.findFirst({
             where: {
                 id: idCar
             }
