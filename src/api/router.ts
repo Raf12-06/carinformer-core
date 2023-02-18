@@ -1,20 +1,20 @@
 import { Router } from 'nd-srv';
-import { markR } from './mark/markR';
-import { modelR } from './model/modelR';
-import { modificationR } from './modification/modificationR';
-import { bodyR } from './body/bodyR';
-import { engineR } from './engine/engineR';
-import { carR } from './car/carR';
+import { markRout } from './mark/mark.rout';
+import { modelRout } from './model/model.rout';
+import { modificationRout } from './modification/modification.rout';
+import { bodyRout } from './body/body.rout';
+import { engineRout } from './engine/engine.rout';
+import { carRout } from './car/car.rout';
 
 export const mainRouter = new Router({
     '/api': {
         router: {
-            '/mark': markR,
-            '/model': modelR,
-            '/modification': modificationR,
-            '/body': bodyR,
-            '/engine': engineR,
-            '/car': carR,
+            '/mark': markRout,
+            '/model': modelRout,
+            '/modification': modificationRout,
+            '/body': bodyRout,
+            '/engine': engineRout,
+            '/car': carRout,
         }
     }
 });
