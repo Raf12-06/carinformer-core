@@ -23,4 +23,12 @@ export class RefillSql extends BaseSQL {
             take: -1,
         })
     }
+
+    public async del(refillId: number): Promise<Refill> {
+        return await this.db.refill.delete({
+            where: {
+                id: refillId,
+            }
+        })
+    }
 }

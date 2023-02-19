@@ -6,7 +6,6 @@ import { CarCreateDto, CarGetDto, CarSetRefillDto, CarSetReplacementDto } from '
 import { Car } from '../../database/Car/car.e';
 import { Refill } from '../../database/Refill/refill.e';
 import { RefillS } from '../../service/Refill/refill.s';
-import { ReplacementSql } from '../../database/Replacement/replacement.sql';
 import { ReplacementS } from '../../service/Replacement/replacement.s';
 import { Replacement } from '../../database/Replacement/replacement.e';
 
@@ -39,7 +38,7 @@ export const carCreateH = {
     }
 }
 
-export const setRefillH = {
+export const carSetRefillH = {
     async preHandler(client: Client) {
     },
     async handler(data: CarSetRefillDto): Promise<{ refill: Refill }> {
@@ -53,7 +52,7 @@ export const setRefillH = {
     }
 }
 
-export const setReplacementH = {
+export const carSetReplacementH = {
     async preHandler(client: Client) {
     },
     async handler(data: CarSetReplacementDto): Promise<{ replacement: Replacement }> {

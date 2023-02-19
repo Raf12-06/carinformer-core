@@ -5,6 +5,7 @@ import { modificationRout } from './modification/modification.rout';
 import { bodyRout } from './body/body.rout';
 import { engineRout } from './engine/engine.rout';
 import { carRout } from './car/car.rout';
+import { refillRout } from './refill/refill.rout';
 
 export const mainRouter = new Router({
     '/api': {
@@ -15,6 +16,7 @@ export const mainRouter = new Router({
             '/body': bodyRout,
             '/engine': engineRout,
             '/car': carRout,
+            '/refill': refillRout,
         }
     }
 });

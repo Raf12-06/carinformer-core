@@ -68,3 +68,35 @@ export const refillSetServiceDto: Schema = {
         }
     }
 }
+
+export interface RefillAddFuelServiceDto {
+    name: string
+}
+export const refillAddFuelServiceDto: Schema = {
+    name: {
+        type: 'string',
+        require: true,
+        reference: {
+            length: {
+                min: 3,
+                max: 10,
+            }
+        }
+    }
+}
+
+export interface RefillFindFuelServiceDto {
+    name: string
+}
+export const refillFindFuelServiceDto: Schema = {
+    name: {
+        type: 'string',
+        require: true,
+        reference: {
+            length: {
+                min: 3,
+                max: 10,
+            }
+        }
+    }
+}

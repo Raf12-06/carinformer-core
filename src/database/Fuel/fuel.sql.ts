@@ -27,4 +27,14 @@ export class FuelSql extends BaseSQL {
     public async getAll(): Promise<Fuel[]> {
         return await this.db.fuel.findMany();
     }
+
+    public async find(name: string): Promise<Fuel[]> {
+        return await this.db.fuel.findMany({
+            where: {
+                name: {
+                    contains: name
+                }
+            }
+        })
+    }
 }
